@@ -67,10 +67,6 @@ public class MainActivity extends Activity {
     private static final String payloadJson
             = "{\"id\":%s,\"params\":{\"hasHuman\": %s},\"method\":\"thing.event.property.post\"}";
 
-    private static final int DELAY_MILLIS = 5 * 1000;
-
-    private Handler handler = new Handler();
-
     private MqttClient mqttClient = null;
 
     @Override
@@ -188,12 +184,5 @@ public class MainActivity extends Activity {
         } catch (Exception e) {
             Log.e(TAG, "postDeviceProperties error " + e.getMessage(), e);
         }
-
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                postDeviceProperties(status);
-            }
-        }, DELAY_MILLIS);
     }
 }
